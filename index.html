@@ -4,93 +4,358 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portofolio Admin - Fifin Tika Ariyani</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --primary: #2563eb;
+      --primary-light: #eff6ff;
+      --dark: #0f172a;
+      --text: #334155;
+      --muted: #64748b;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --border: #e2e8f0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       line-height: 1.6;
-      color: #333;
-      max-width: 800px;
-      margin: 0 auto;
+      color: var(--text);
+      background-color: var(--bg);
       padding: 40px 20px;
-      background-color: #f9fafb;
     }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* Hero / Header */
     header {
+      background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+      color: white;
+      padding: 48px 32px;
+      border-radius: 16px;
       text-align: center;
-      padding-bottom: 30px;
-      border-bottom: 2px solid #e5e7eb;
+      box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.25);
+      margin-bottom: 32px;
     }
-    h1 { margin-bottom: 5px; color: #111827; }
-    .subtitle { color: #4b5563; font-size: 1.1em; margin-bottom: 12px; }
-    .contact-links {
-      font-size: 0.95em;
-      color: #374151;
+
+    .avatar-placeholder {
+      width: 84px;
+      height: 84px;
+      background: rgba(255, 255, 255, 0.2);
+      border: 3px solid rgba(255, 255, 255, 0.8);
+      border-radius: 50%;
+      margin: 0 auto 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 1px;
     }
-    .contact-links a {
-      color: #2563eb;
+
+    header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      margin-bottom: 20px;
+    }
+
+    .contact-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .contact-btn {
+      background: rgba(255, 255, 255, 0.15);
+      color: white;
       text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 99px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      backdrop-filter: blur(4px);
+      transition: all 0.2s ease;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+
+    .contact-btn:hover {
+      background: white;
+      color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    /* Section Styling */
+    section {
+      background: var(--card);
+      padding: 32px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03);
+      margin-bottom: 24px;
+    }
+
+    h2 {
+      font-size: 1.3rem;
+      color: var(--dark);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    h2::before {
+      content: "";
+      display: inline-block;
+      width: 6px;
+      height: 22px;
+      background: var(--primary);
+      border-radius: 4px;
+    }
+
+    /* Skills */
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .badge {
+      background: var(--primary-light);
+      color: var(--primary);
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border: 1px solid #dbeafe;
+    }
+
+    /* Dummy Projects Grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      margin-top: 16px;
+    }
+
+    .project-card {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      background: #ffffff;
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 20px -8px rgba(0, 0, 0, 0.08);
+      border-color: #93c5fd;
+    }
+
+    .project-tag {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 700;
+      color: var(--primary);
+      background: var(--primary-light);
+      padding: 4px 10px;
+      border-radius: 6px;
+      display: inline-block;
+      margin-bottom: 12px;
+      width: fit-content;
+    }
+
+    .project-card h3 {
+      font-size: 1.05rem;
+      color: var(--dark);
+      margin-bottom: 8px;
+    }
+
+    .project-card p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .project-metrics {
+      background: var(--bg);
+      padding: 10px 12px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      color: var(--dark);
       font-weight: 500;
     }
-    .contact-links a:hover {
-      text-decoration: underline;
+
+    /* Table Sample */
+    .table-wrapper {
+      overflow-x: auto;
+      margin-top: 16px;
     }
-    section {
-      background: white;
-      padding: 25px;
-      margin-top: 25px;
-      border-radius: 8px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
     }
-    h2 { color: #1f2937; border-bottom: 1px solid #f3f4f6; padding-bottom: 10px; }
-    ul { padding-left: 20px; }
-    li { margin-bottom: 8px; }
-    .badge {
-      display: inline-block;
-      background: #e0e7ff;
-      color: #3730a3;
-      padding: 4px 10px;
-      border-radius: 15px;
-      font-size: 0.9em;
-      margin: 3px;
+
+    th, td {
+      text-align: left;
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    th {
+      background: var(--bg);
+      color: var(--dark);
+      font-weight: 600;
+    }
+
+    .status-done {
+      background: #dcfce7;
+      color: #166534;
+      padding: 3px 10px;
+      border-radius: 99px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+      margin-top: 32px;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>Fifin Tika Ariyani</h1>
-    <p class="subtitle">Administrative Support & Operations Specialist</p>
-    <p class="contact-links">
-      Email: <a href="mailto:fifintikaariyani@gmail.com">fifintikaariyani@gmail.com</a> | 
-      LinkedIn: <a href="https://www.linkedin.com/in/fifin-tika-2093b8261/" target="_blank">Fifin Tika</a> | 
-      Lokasi: Bekasi, Indonesia
-    </p>
-  </header>
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <div class="avatar-placeholder">FT</div>
+      <h1>Fifin Tika Ariyani</h1>
+      <p class="subtitle">Administrative Support & Operations Specialist</p>
+      <div class="contact-bar">
+        <a href="mailto:fifintikaariyani@gmail.com" class="contact-btn">✉️ fifintikaariyani@gmail.com</a>
+        <a href="https://www.linkedin.com/in/fifin-tika-2093b8261/" target="_blank" class="contact-btn">🔗 LinkedIn Profile</a>
+        <span class="contact-btn">📍 Bekasi, Indonesia</span>
+      </div>
+    </header>
 
-  <section>
-    <h2>Tentang Saya</h2>
-    <p>Profesional administrasi yang teliti, terorganisir, dan berpengalaman dalam mengelola operasional harian kantor, pengarsipan dokumen, entri data, serta koordinasi jadwal. Terbiasa bekerja dengan tenggat waktu ketat dan menjaga kerahasiaan data perusahaan.</p>
-  </section>
+    <!-- Tentang Saya -->
+    <section>
+      <h2>Tentang Saya</h2>
+      <p>Profesional administrasi yang teliti, terstruktur, dan berorientasi pada detail dalam mengelola operasional harian kantor, pengarsipan dokumen digital, pengolahan data, serta koordinasi jadwal. Terbiasa bekerja dengan tenggat waktu ketat serta menjaga akurasi dan kerahasiaan data perusahaan.</p>
+    </section>
 
-  <section>
-    <h2>Keahlian Utama</h2>
-    <div>
-      <span class="badge">Microsoft Office (Excel, Word, PowerPoint)</span>
-      <span class="badge">Google Workspace</span>
-      <span class="badge">Data Entry & Manajemen Database</span>
-      <span class="badge">Pengarsipan Dokumen</span>
-      <span class="badge">Penjadwalan & Korespondensi</span>
-      <span class="badge">Administrasi Keuangan Dasar / Invoicing</span>
-    </div>
-  </section>
+    <!-- Keahlian Utama -->
+    <section>
+      <h2>Keahlian & Perangkat Kerja</h2>
+      <div class="skills-grid">
+        <span class="badge">Microsoft Excel (VLOOKUP, Pivot Table, IF)</span>
+        <span class="badge">Google Workspace (Docs, Sheets, Drive)</span>
+        <span class="badge">Data Entry & Database Cleaning</span>
+        <span class="badge">Pengarsipan & SOP Dokumen</span>
+        <span class="badge">Invoicing & Petty Cash</span>
+        <span class="badge">Korespondensi & Minutes of Meeting (MoM)</span>
+      </div>
+    </section>
 
-  <section>
-    <h2>Pengalaman & Studi Kasus Administrasi</h2>
-    <ul>
-      <li><strong>Digitalisasi & Penataan Arsip:</strong> Mengorganisir lebih dari 1.000+ dokumen fisik ke sistem cloud (Google Drive) sehingga waktu pencarian dokumen berkurang hingga 50%.</li>
-      <li><strong>Pengelolaan Laporan & Data:</strong> Menyusun rekapitulasi absensi, inventaris kantor, dan laporan pengeluaran bulanan menggunakan rumus Excel (VLOOKUP, Pivot Table).</li>
-      <li><strong>Koordinasi Jadwal & Rapat:</strong> Mengatur jadwal pertemuan tim, menyiapkan notulensi rapat (MoM), dan memastikan tindak lanjut berjalan sesuai jadwal.</li>
-    </ul>
-  </section>
+    <!-- Dummy Projects -->
+    <section>
+      <h2>Portofolio & Simulasi Proyek Administrasi</h2>
+      <p style="color: var(--muted); font-size: 0.95rem;">Contoh studi kasus dan simulasi sistem kerja administrasi yang telah saya rancang:</p>
+      
+      <div class="projects-grid">
+        <div class="project-card">
+          <div>
+            <span class="project-tag">Excel & Reporting</span>
+            <h3>Sistem Rekap Inventaris & ATK Kantor</h3>
+            <p>Membuat template pelacakan stok barang masuk/keluar otomatis menggunakan rumus SUMIFS dan Conditional Formatting untuk peringatan stok menipis.</p>
+          </div>
+          <div class="project-metrics">📊 Hasil: Mengurangi selisih stok bulanan hingga 95%</div>
+        </div>
+
+        <div class="project-card">
+          <div>
+            <span class="project-tag">Digital Filing</span>
+            <h3>Struktur Arsip Digital & SOP Penamaan File</h3>
+            <p>Merancang hierarki folder Google Drive untuk 500+ dokumen kontrak, invoice, dan surat jalan lengkap dengan indeks pencarian cepat.</p>
+          </div>
+          <div class="project-metrics">⚡ Hasil: Waktu pencarian dokumen turun dari 10 menit menjadi &lt;30 detik</div>
+        </div>
+
+        <div class="project-card">
+          <div>
+            <span class="project-tag">Finance Admin</span>
+            <h3>Tracker Invoice & Kas Kecil (Petty Cash)</h3>
+            <p>Menyusun buku kas harian dan dashboard status pembayaran vendor (Paid, Pending, Overdue) untuk mempermudah rekonsiliasi akhir bulan.</p>
+          </div>
+          <div class="project-metrics">✅ Hasil: 100% laporan pengeluaran tercatat tepat waktu</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contoh Output Kerja -->
+    <section>
+      <h2>Contoh Log Administrasi & Tracking Dokumen</h2>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Kode Dokumen</th>
+              <th>Jenis Administrasi</th>
+              <th>Tools</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>SOP-ADM-01</strong></td>
+              <td>Template Rekap Absensi & Lembur Karyawan</td>
+              <td>Microsoft Excel</td>
+              <td><span class="status-done">Selesai</span></td>
+            </tr>
+            <tr>
+              <td><strong>INV-2026-04</strong></td>
+              <td>Automated Invoice & Kwitansi Generator</td>
+              <td>Google Sheets</td>
+              <td><span class="status-done">Selesai</span></td>
+            </tr>
+            <tr>
+              <td><strong>MOM-OPS-12</strong></td>
+              <td>Format Notulensi Rapat & Action Plan Tracker</td>
+              <td>Google Docs / Notion</td>
+              <td><span class="status-done">Selesai</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2026 Fifin Tika Ariyani • Dibuat untuk Portofolio Profesional Administrasi</p>
+    </footer>
+  </div>
 
 </body>
 </html>
